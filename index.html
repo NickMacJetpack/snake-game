@@ -1,49 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Snake Game</title>
+<style>
+  @font-face {
+    font-family: 'PPNeueBit';
+    src: url('https://nickmacjetpack.github.io/snake-game/fonts/PPNeueBit-Regular.woff2') format('woff2'),
+         url('https://nickmacjetpack.github.io/snake-game/fonts/PPNeueBit-Regular.woff') format('woff'),
+         url('https://nickmacjetpack.github.io/snake-game/fonts/PPNeueBit-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
 
-  <!-- 👇 Font face pulled from your GitHub Pages font file -->
-  <style>
-    @font-face {
-      font-family: 'NickCustom';
-      src: url('https://nickmacjetpack.github.io/snake-game/fonts/custom-font.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-    }
+  body {
+    font-family: 'PPNeueBit', sans-serif;
+    color: inherit;
+    background: transparent;
+  }
 
-    body {
-      font-family: 'NickCustom', sans-serif;
-      color: inherit;
-      background: transparent;
-    }
+  .game {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 300px;
+    margin: auto;
+  }
 
-    .game {
-      background-color: #f0f0f0;
-      border-radius: 10px;
-      padding: 10px;
-      max-width: 300px;
-      margin: auto;
-    }
+  #snake {
+    display: block;
+    margin: 0 auto;
+    background-color: #000;
+    width: 85vw;
+    max-width: 280px;
+  }
+</style>
 
-    #snake {
-      display: block;
-      margin: 0 auto;
-      background-color: #000;
-      width: 85vw;
-      max-width: 280px;
-    }
-  </style>
-</head>
-<body>
-  <div class="game">
-    <canvas id="snake" height="240"></canvas>
-  </div>
-
-  <!-- 👇 Font probe (not needed anymore since you're setting font directly) -->
-  <!-- <div id="font-probe" style="visibility:hidden; position:absolute; top:-9999px;">Sample</div> -->
-
-  <script src="snake.js"></script>
-</body>
-</html>
