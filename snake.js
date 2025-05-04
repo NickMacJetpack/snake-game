@@ -68,7 +68,7 @@ snake = {
     snake.direction = 'left';
     snake.x = canvas.width / 2 + snake.size / 2;
     snake.y = canvas.height / 2 + snake.size / 2;
-    for (i = snake.x + 5 * snake.size; i >= snake.x; i -= snake.size) {
+    for (let i = snake.x + 5 * snake.size; i >= snake.x; i -= snake.size) {
       snake.sections.push(i + ',' + snake.y);
     }
   },
@@ -86,7 +86,7 @@ snake = {
   },
 
   draw: function () {
-    for (i = 0; i < snake.sections.length; i++) {
+    for (let i = 0; i < snake.sections.length; i++) {
       snake.drawSection(snake.sections[i].split(','));
     }
   },
@@ -132,8 +132,17 @@ food = {
 
   set: function () {
     food.size = snake.size;
-    food.x = (Math.ceil(Math.random() * 10) * snake.size * 4) - snake.size / 2;
-    food.y = (Math.ceil(Math.random() * 10) * snake.size * 3) - snake.size / 2;
+
+    const cols = Math.floor(canvas.width / food.size);
+    const rows = Math.floor(canvas.height / food.size);
+
+    const randCol = Math.floor(Math.random() * cols);
+    const randRow = Math.floor(Math.random() * rows);
+
+    food.x = randCol * food.size + food.size / 2;
+    food.y = randRow * food.size + food.size / 2;
+
+    console.log('Food set at', food.x, food.y);
   },
 
   draw: function () {
@@ -157,7 +166,7 @@ keys = {
 };
 
 Object.prototype.getKey = function (value) {
-  for (var key in this) {
+  for (let key in this) {
     if (this[key] instanceof Array && this[key].indexOf(value) >= 0) {
       return key;
     }
@@ -173,7 +182,7 @@ if (isTouchDevice()) {
   addEventListener("touchstart", handleEvent, false);
 } else {
   addEventListener("keydown", function (e) {
-    lastKey = keys.getKey(e.keyCode);
+    const lastKey = keys.getKey(e.keyCode);
     if (['up', 'down', 'left', 'right'].includes(lastKey) &&
         lastKey !== inverseDirection[snake.direction]) {
       snake.direction = lastKey;
