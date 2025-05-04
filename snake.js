@@ -111,17 +111,25 @@ snake = {
     );
   },
 
-  checkGrowth: function () {
-    if (snake.x === food.x && snake.y === food.y) {
-      game.score++;
-      if (game.score % 5 === 0 && game.fps < 60) {
-        game.fps++;
-      }
-      food.set();
-    } else {
-      snake.sections.shift();
+checkGrowth: function () {
+  const dx = snake.x - food.x;
+  const dy = snake.y - food.y;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+
+  console.log('Snake:', snake.x, snake.y, '| Food:', food.x, food.y, '| Distance:', distance);
+
+  if (distance < snake.size) {
+    console.log('EATEN!');
+    game.score++;
+    if (game.score % 5 === 0 && game.fps < 60) {
+      game.fps++;
     }
+    food.set();
+  } else {
+    snake.sections.shift();
   }
+}
+
 };
 
 food = {
