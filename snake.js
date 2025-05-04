@@ -112,7 +112,11 @@ snake = {
   },
 
   checkGrowth: function () {
-    if (snake.x === food.x && snake.y === food.y) {
+    const dx = snake.x - food.x;
+    const dy = snake.y - food.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < snake.size / 2) {
       game.score++;
       if (game.score % 5 === 0 && game.fps < 60) {
         game.fps++;
@@ -143,83 +147,4 @@ food = {
     food.y = randRow * food.size + food.size / 2;
   },
 
-  draw: function () {
-    game.drawBox(food.x, food.y, food.size, food.color);
-  }
-};
-
-inverseDirection = {
-  up: 'down',
-  left: 'right',
-  right: 'left',
-  down: 'up'
-};
-
-keys = {
-  up: [38, 75, 87],
-  down: [40, 74, 83],
-  left: [37, 65, 72],
-  right: [39, 68, 76],
-  start_game: [13, 32]
-};
-
-Object.prototype.getKey = function (value) {
-  for (var key in this) {
-    if (this[key] instanceof Array && this[key].indexOf(value) >= 0) {
-      return key;
-    }
-  }
-  return null;
-};
-
-function isTouchDevice() {
-  return "ontouchstart" in document.documentElement;
-}
-
-if (isTouchDevice()) {
-  addEventListener("touchstart", handleEvent, false);
-} else {
-  addEventListener("keydown", function (e) {
-    lastKey = keys.getKey(e.keyCode);
-    if (['up', 'down', 'left', 'right'].includes(lastKey) &&
-        lastKey !== inverseDirection[snake.direction]) {
-      snake.direction = lastKey;
-    } else if (['start_game'].includes(lastKey) && game.over) {
-      game.start();
-    }
-  }, false);
-  addEventListener("click", handleEvent, false);
-}
-
-function handleEvent(e) {
-  e.stopPropagation();
-  if (game.over) {
-    game.start();
-  }
-  if (snake.direction === 'left') snake.direction = 'down';
-  else if (snake.direction === 'down') snake.direction = 'right';
-  else if (snake.direction === 'right') snake.direction = 'up';
-  else if (snake.direction === 'up') snake.direction = 'left';
-}
-
-var requestAnimationFrame = requestAnimationFrame ||
-  webkitRequestAnimationFrame ||
-  mozRequestAnimationFrame ||
-  msRequestAnimationFrame ||
-  oRequestAnimationFrame;
-
-function loop() {
-  if (!game.over) {
-    game.resetCanvas();
-    game.drawScore();
-    snake.move();
-    food.draw();
-    snake.draw();
-    game.drawMessage();
-  }
-  setTimeout(function () {
-    requestAnimationFrame(loop);
-  }, 1000 / game.fps);
-}
-
-requestAnimationFrame(loop);
+  draw
