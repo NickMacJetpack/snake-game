@@ -112,11 +112,7 @@ snake = {
   },
 
   checkGrowth: function () {
-    const dx = snake.x - food.x;
-    const dy = snake.y - food.y;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-
-    if (distance < snake.size / 2) {
+    if (snake.x === food.x && snake.y === food.y) {
       game.score++;
       if (game.score % 5 === 0 && game.fps < 60) {
         game.fps++;
