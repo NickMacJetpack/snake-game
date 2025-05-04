@@ -3,13 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Snake Game</title>
+
+  <!-- 👇 Font face pulled from your GitHub Pages font file -->
   <style>
-    :root {
-      font-family: inherit;
+    @font-face {
+      font-family: 'NickCustom';
+      src: url('https://nickmacjetpack.github.io/snake-game/fonts/custom-font.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
     }
 
     body {
-      font-family: inherit;
+      font-family: 'NickCustom', sans-serif;
       color: inherit;
       background: transparent;
     }
@@ -36,12 +41,9 @@
     <canvas id="snake" height="240"></canvas>
   </div>
 
-  <!-- 👇 Invisible div used to detect the embedded page's font -->
-  <div id="font-probe" style="visibility:hidden; position:absolute; top:-9999px;">
-    Sample
-  </div>
+  <!-- 👇 Font probe (not needed anymore since you're setting font directly) -->
+  <!-- <div id="font-probe" style="visibility:hidden; position:absolute; top:-9999px;">Sample</div> -->
 
   <script src="snake.js"></script>
 </body>
 </html>
-
