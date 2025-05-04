@@ -1,33 +1,49 @@
-<style>
-  @font-face {
-    font-family: 'PPNeueBit';
-    src: url('https://nickmacjetpack.github.io/snake-game/fonts/PPNeueBit-Regular.woff2') format('woff2'),
-         url('https://nickmacjetpack.github.io/snake-game/fonts/PPNeueBit-Regular.woff') format('woff'),
-         url('https://nickmacjetpack.github.io/snake-game/fonts/PPNeueBit-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Snake Game</title>
 
-  body {
-    font-family: 'PPNeueBit', sans-serif;
-    color: inherit;
-    background: transparent;
-  }
+  <!-- Load custom font -->
+  <style>
+    @font-face {
+      font-family: 'PPNeueBit';
+      src: url('https://nickmacjetpack.github.io/snake-game/fonts/PPNeueBit-Regular.woff2') format('woff2'),
+           url('https://nickmacjetpack.github.io/snake-game/fonts/PPNeueBit-Regular.woff') format('woff'),
+           url('https://nickmacjetpack.github.io/snake-game/fonts/PPNeueBit-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-  .game {
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    padding: 10px;
-    max-width: 300px;
-    margin: auto;
-  }
+    body {
+      font-family: 'PPNeueBit', sans-serif;
+      background: transparent;
+      margin: 0;
+      padding: 0;
+    }
 
-  #snake {
-    display: block;
-    margin: 0 auto;
-    background-color: #000;
-    width: 85vw;
-    max-width: 280px;
-  }
-</style>
+    .game {
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      padding: 10px;
+      max-width: 300px;
+      margin: auto;
+    }
 
+    #snake {
+      display: block;
+      margin: 0 auto;
+      background-color: #000;
+      width: 85vw;
+      max-width: 280px;
+    }
+  </style>
+</head>
+<body>
+  <div class="game">
+    <canvas id="snake" height="240" width="280"></canvas>
+  </div>
+
+  <script src="snake.js"></script>
+</body>
+</html>
