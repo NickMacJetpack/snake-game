@@ -34,7 +34,8 @@ game = {
 
   drawScore: function () {
     context.fillStyle = '#ddd';
-    context.font = '36px inherit'; // ← modified
+    const fontStyle = window.getComputedStyle(document.getElementById('font-probe')).font;
+    context.font = '36px ' + fontStyle.split(' ')[1]; // Use parent font
     context.textAlign = 'center';
     context.fillText(game.score, canvas.width / 2, canvas.height * 0.9);
   },
@@ -42,7 +43,9 @@ game = {
   drawMessage: function () {
     if (game.message !== null) {
       context.fillStyle = '#fff';
-      context.font = (canvas.height / 10) + 'px inherit'; // ← modified
+      const fontStyle = window.getComputedStyle(document.getElementById('font-probe')).font;
+      const fontSize = canvas.height / 10;
+      context.font = fontSize + 'px ' + fontStyle.split(' ')[1];
       context.textAlign = 'center';
       context.fillText(game.message, canvas.width / 2, canvas.height / 2);
     }
